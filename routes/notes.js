@@ -17,7 +17,6 @@ notes.post('/', (req, res) => {
 
 notes.delete('/:id', (req, res) => {
     deleteNote('./db/db.json', req.params.id)
-    console.log('deletes a note from the db.json');
 })
 
 

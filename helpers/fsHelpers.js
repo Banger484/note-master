@@ -23,12 +23,12 @@ function saveNote(content, file) {
       writeToFile(file, parsed);
     }
   });
+  window.location.reload()
 }
 
 // Create a deleteNote function that deletes a note from the db.json file and returns a success message(bonus task)
 
 function deleteNote(file, id) {
-  const dbList = [];
   fs.readFile(file, "utf-8", (err, data) => {
     if (err) {
       console.error(err);
