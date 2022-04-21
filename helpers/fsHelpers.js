@@ -1,6 +1,5 @@
 const fs = require("fs");
 const util = require("util");
-const notesData = require("../db/db.json");
 
 // Create a getNotes function that returns all of the saved notes from db.json
 const getNotes = util.promisify(fs.readFile)
