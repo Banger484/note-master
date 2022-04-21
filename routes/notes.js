@@ -1,5 +1,4 @@
 const notes = require('express').Router()
-const notesData = require('../db/db.json')
 const uniqid = require('uniqid')
 const { getNotes, saveNote, deleteNote } = require('../helpers/fsHelpers')
 
@@ -8,20 +7,18 @@ notes.get('/', (req, res) => {
 })
 
 notes.post('/', (req, res) => {
-    const newNote = {
+    req.body = {
         id: uniqid(),
         title: req.body.title,
         text: req.body.text
     }
-    const note = saveNote(newNote, './db/db.json')
-    res.json(note)
+    res.json(saveNote(req.body, './db/db.json'))
 })
 
 notes.delete('/:id', (req, res) => {
-    deleteNote()
+    deleteNote('./db/db.json', req.params.id)
     console.log('deletes a note from the db.json');
 })
-
 
 
 
