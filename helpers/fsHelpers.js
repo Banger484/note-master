@@ -3,9 +3,8 @@ const util = require("util");
 const notesData = require("../db/db.json");
 
 // Create a getNotes function that returns all of the saved notes from db.json
-function getNotes() {
-  return notesData;
-}
+const getNotes = util.promisify(fs.readFile)
+
 // Create a saveNote function that saves a new note to the db.json file and returns
 // the new note as JSON
 const writeToFile = (destination, content) =>
@@ -23,7 +22,6 @@ function saveNote(content, file) {
       writeToFile(file, parsed);
     }
   });
-  window.location.reload()
 }
 
 // Create a deleteNote function that deletes a note from the db.json file and returns a success message(bonus task)

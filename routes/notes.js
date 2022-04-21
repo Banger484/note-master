@@ -3,7 +3,7 @@ const uniqid = require('uniqid')
 const { getNotes, saveNote, deleteNote } = require('../helpers/fsHelpers')
 
 notes.get('/', (req, res) => {
-    res.json(getNotes())
+    getNotes('./db/db.json').then((data) => res.json(JSON.parse(data)))
 })
 
 notes.post('/', (req, res) => {
